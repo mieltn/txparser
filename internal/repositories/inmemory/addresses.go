@@ -11,7 +11,7 @@ type address struct{}
 type addressesRepository struct {
 	l    logger.Logger
 	data map[string]address
-	mtx  sync.RWMutex
+	mtx  *sync.RWMutex
 }
 
 func NewAddresses(l logger.Logger) *addressesRepository {
@@ -20,7 +20,7 @@ func NewAddresses(l logger.Logger) *addressesRepository {
 	return &addressesRepository{
 		l:    l,
 		data: data,
-		mtx:  sync.RWMutex{},
+		mtx:  &sync.RWMutex{},
 	}
 }
 

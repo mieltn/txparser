@@ -10,14 +10,14 @@ import (
 type processedBlockRepo struct {
 	l               logger.Logger
 	lastBlockNumber *big.Int
-	mtx             sync.Mutex
+	mtx             *sync.Mutex
 }
 
 func NewProcessedBlockRepo(l logger.Logger, lastProcessedBlock *big.Int) *processedBlockRepo {
 	return &processedBlockRepo{
 		l:               l,
 		lastBlockNumber: lastProcessedBlock,
-		mtx:             sync.Mutex{},
+		mtx:             &sync.Mutex{},
 	}
 }
 

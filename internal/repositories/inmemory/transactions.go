@@ -18,7 +18,7 @@ type transaction struct {
 type transactionsRepository struct {
 	l    logger.Logger
 	data map[string][]transaction
-	mtx  sync.RWMutex
+	mtx  *sync.RWMutex
 }
 
 func NewTransactions(l logger.Logger) *transactionsRepository {
@@ -26,7 +26,7 @@ func NewTransactions(l logger.Logger) *transactionsRepository {
 	return &transactionsRepository{
 		l:    l,
 		data: data,
-		mtx:  sync.RWMutex{},
+		mtx:  &sync.RWMutex{},
 	}
 }
 
