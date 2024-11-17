@@ -26,6 +26,7 @@ func (h *transactionsHandler) GetCurrentBlock(w http.ResponseWriter, r *http.Req
 		h.l.Errorf("failed to get current block: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		writeJsonWithError(w, err)
+		return
 	}
 	w.WriteHeader(http.StatusOK)
 	writeJson(w, api.CurrentBlockResponse{
@@ -38,12 +39,15 @@ func (h *transactionsHandler) GetTransactions(w http.ResponseWriter, r *http.Req
 	txs, err := h.service.GetTransactions(r.Context(), addr)
 	if errors.Is(err, domain.ErrAddressNotFound) {
 		w.WriteHeader(http.StatusNotFound)
+		writeJsonWithError(w, err)
+		return
 	} else if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		writeJsonWithError(w, err)
+		return
 	}
 	w.WriteHeader(http.StatusOK)
 	writeJson(w, toGetTransactionsResponse(txs))
-
 }
 
 func toGetTransactionsResponse(txs []domain.Transaction) api.GetTransactionsResponse {
