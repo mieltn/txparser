@@ -1,0 +1,14 @@
+{
+  "app": {
+    "port": ":8080",
+    "poll_interval_sec": 10,
+    "poll_workers": 3,
+    "start_block": "0x143797F"
+  },
+  "eth": {
+    "url": "https://ethereum-rpc.publicnode.com",
+    "retry": 3,
+    "retry_in": 10,
+    "timeout": 10
+  }
+}
