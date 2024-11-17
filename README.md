@@ -47,7 +47,7 @@ HTTP API is started as a server, parser subprocess is set to query chain each 10
 
 ## Running and manual testing
 
-I found [random transaction](https://etherscan.io/tx/0xb3c5c2dbef5174c6a7e83cbc64b986239b5c93afe18533561c08143b11080bca) on Etherscan and set `start_block` in config to be previous of that transaction.
+I found [random transaction](https://etherscan.io/tx/0xb3c5c2dbef5174c6a7e83cbc64b986239b5c93afe18533561c08143b11080bca) on Etherscan and set `start_block` in config to be previous to that transaction.
 
 After starting the app, add From and To addresses to subscription list (the parser process will sleep for 10 secs in the beginning). *You don't have to use proposed addresses, pick any recent tx, add addresses and adjust start_block in config to be not too far from now.   
 
