@@ -46,8 +46,7 @@ func main() {
 	if background != nil {
 		go background(ctx)
 	}
-
-	// beware background stop might not be awaited
+	
 	srv.Run(ctx)
 	time.Sleep(time.Second * 2)
 }
